@@ -46,6 +46,7 @@ namespace VideoDownload
             ReadStdOutput += new DelReadStdOutput(ReadStdOutputAction);
             ReadErrOutput += new DelReadErrOutput(ReadErrOutputAction);
             VideoUrlText.Text = MuShow.url;
+            fileNameText.Text = MuShow.name;
         }
 
         private void FileSaveLocationButt_Click(object sender, EventArgs e)

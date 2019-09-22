@@ -32,9 +32,10 @@ namespace VideoDownload
         public event DelReadStdOutput ReadStdOutput;
         public event DelReadErrOutput ReadErrOutput;
         List<string> MovieList = new List<string>();
+        List<string> MovieNameList = new List<string>();
         private string ffmpegOutput;
         private int FFplayid;
-        public static string url = "";
+        public static string url = "", name;
         public MuShow()
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace VideoDownload
         {
             textBox_Info.Text = "";
             MovieList.Clear();
+            MovieNameList.Clear();
             string constructorString = "Database=doubanMovie;Data Source= 120.77.159.49;User Id=doubanMovie;Password=EwJSpRGRaMxLHHNc;charset='utf8';pooling=true";
             MySqlConnection myConnnect = new MySqlConnection(constructorString);
             myConnnect.Open();
@@ -59,6 +61,7 @@ namespace VideoDownload
             {
                 textBox_Info.AppendText("编号："+i+"     电影名："+Movieds.Tables[0].Rows[i][1].ToString()+"      地址："+ Movieds.Tables[0].Rows[i][2].ToString() + "\r\n");
                 MovieList.Add(Movieds.Tables[0].Rows[i][2].ToString());
+                MovieNameList.Add(Movieds.Tables[0].Rows[i][1].ToString());
                 Thread.Sleep(100);
             }
             Movieds.Dispose();
@@ -127,6 +130,7 @@ namespace VideoDownload
                 BeginInvoke(new Action(() =>
                 {
                     FlashWindow(this.Handle, true);
+                    LoginDataBase(VideoNameText.Text);
                 }), null);
             }
             catch { }
@@ -145,7 +149,14 @@ namespace VideoDownload
             
             if(url.Substring(url.Length-4, 4)=="m3u8")
             {
-                OpenUseM3U8(url);
+                if (LocalPlayRadio.Checked)
+                {
+                    OpenUseM3U8(url);
+                }
+                else
+                {
+                    Process.Start(@"https://www.m3u8play.com/?play=" + url);
+                }
             }
             else
             {
@@ -158,6 +169,7 @@ namespace VideoDownload
             try
             {
                 url = MovieList[Convert.ToInt32(MovieID.Text)];
+                name= MovieNameList[Convert.ToInt32(MovieID.Text)];
             }
             catch
             {

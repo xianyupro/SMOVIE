@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MuShow));
             this.PlayMovieButt = new MaterialSkin.Controls.MaterialRaisedButton();
             this.VideoStartF = new MaterialSkin.Controls.MaterialRaisedButton();
             this.VideoNameText = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -36,6 +37,8 @@
             this.MovieID = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.DownloadM = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.HtmlPlayRadio = new MaterialSkin.Controls.MaterialRadioButton();
+            this.LocalPlayRadio = new MaterialSkin.Controls.MaterialRadioButton();
             this.SuspendLayout();
             // 
             // PlayMovieButt
@@ -79,7 +82,7 @@
             this.VideoNameText.SelectionStart = 0;
             this.VideoNameText.Size = new System.Drawing.Size(416, 23);
             this.VideoNameText.TabIndex = 21;
-            this.VideoNameText.Text = "上海堡垒";
+            this.VideoNameText.Text = "奇异博士";
             this.VideoNameText.UseSystemPasswordChar = false;
             // 
             // materialLabel3
@@ -111,16 +114,16 @@
             // 
             this.MovieID.Depth = 0;
             this.MovieID.Hint = "";
-            this.MovieID.Location = new System.Drawing.Point(493, 119);
+            this.MovieID.Location = new System.Drawing.Point(522, 119);
             this.MovieID.MouseState = MaterialSkin.MouseState.HOVER;
             this.MovieID.Name = "MovieID";
             this.MovieID.PasswordChar = '\0';
             this.MovieID.SelectedText = "";
             this.MovieID.SelectionLength = 0;
             this.MovieID.SelectionStart = 0;
-            this.MovieID.Size = new System.Drawing.Size(119, 23);
+            this.MovieID.Size = new System.Drawing.Size(90, 23);
             this.MovieID.TabIndex = 21;
-            this.MovieID.Text = "1";
+            this.MovieID.Text = "0";
             this.MovieID.UseSystemPasswordChar = false;
             // 
             // materialLabel1
@@ -129,7 +132,7 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(305, 119);
+            this.materialLabel1.Location = new System.Drawing.Point(349, 121);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(169, 19);
@@ -150,11 +153,45 @@
             this.DownloadM.UseVisualStyleBackColor = true;
             this.DownloadM.Click += new System.EventHandler(this.DownloadM_Click);
             // 
+            // HtmlPlayRadio
+            // 
+            this.HtmlPlayRadio.Checked = true;
+            this.HtmlPlayRadio.Depth = 0;
+            this.HtmlPlayRadio.Font = new System.Drawing.Font("Roboto", 10F);
+            this.HtmlPlayRadio.Location = new System.Drawing.Point(250, 116);
+            this.HtmlPlayRadio.Margin = new System.Windows.Forms.Padding(0);
+            this.HtmlPlayRadio.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.HtmlPlayRadio.MouseState = MaterialSkin.MouseState.HOVER;
+            this.HtmlPlayRadio.Name = "HtmlPlayRadio";
+            this.HtmlPlayRadio.Ripple = true;
+            this.HtmlPlayRadio.Size = new System.Drawing.Size(94, 30);
+            this.HtmlPlayRadio.TabIndex = 25;
+            this.HtmlPlayRadio.TabStop = true;
+            this.HtmlPlayRadio.Text = "网页播放";
+            this.HtmlPlayRadio.UseVisualStyleBackColor = true;
+            // 
+            // LocalPlayRadio
+            // 
+            this.LocalPlayRadio.Depth = 0;
+            this.LocalPlayRadio.Font = new System.Drawing.Font("Roboto", 10F);
+            this.LocalPlayRadio.Location = new System.Drawing.Point(153, 116);
+            this.LocalPlayRadio.Margin = new System.Windows.Forms.Padding(0);
+            this.LocalPlayRadio.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.LocalPlayRadio.MouseState = MaterialSkin.MouseState.HOVER;
+            this.LocalPlayRadio.Name = "LocalPlayRadio";
+            this.LocalPlayRadio.Ripple = true;
+            this.LocalPlayRadio.Size = new System.Drawing.Size(96, 30);
+            this.LocalPlayRadio.TabIndex = 26;
+            this.LocalPlayRadio.Text = "本地播放";
+            this.LocalPlayRadio.UseVisualStyleBackColor = true;
+            // 
             // MuShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 638);
+            this.Controls.Add(this.HtmlPlayRadio);
+            this.Controls.Add(this.LocalPlayRadio);
             this.Controls.Add(this.DownloadM);
             this.Controls.Add(this.PlayMovieButt);
             this.Controls.Add(this.VideoStartF);
@@ -163,6 +200,7 @@
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.textBox_Info);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MuShow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MuShow";
@@ -181,5 +219,7 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField MovieID;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialRaisedButton DownloadM;
+        private MaterialSkin.Controls.MaterialRadioButton HtmlPlayRadio;
+        private MaterialSkin.Controls.MaterialRadioButton LocalPlayRadio;
     }
 }
