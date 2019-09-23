@@ -39,6 +39,7 @@
             this.DownloadM = new MaterialSkin.Controls.MaterialRaisedButton();
             this.HtmlPlayRadio = new MaterialSkin.Controls.MaterialRadioButton();
             this.LocalPlayRadio = new MaterialSkin.Controls.MaterialRadioButton();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // PlayMovieButt
@@ -185,11 +186,25 @@
             this.LocalPlayRadio.Text = "本地播放";
             this.LocalPlayRadio.UseVisualStyleBackColor = true;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBox1.Location = new System.Drawing.Point(541, 76);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(82, 18);
+            this.checkBox1.TabIndex = 27;
+            this.checkBox1.Text = "在线搜索";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // MuShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 638);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.HtmlPlayRadio);
             this.Controls.Add(this.LocalPlayRadio);
             this.Controls.Add(this.DownloadM);
@@ -221,5 +236,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton DownloadM;
         private MaterialSkin.Controls.MaterialRadioButton HtmlPlayRadio;
         private MaterialSkin.Controls.MaterialRadioButton LocalPlayRadio;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

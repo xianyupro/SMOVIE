@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VideoAnalysis.Common;
 
 namespace VideoDownload
 {
@@ -36,35 +38,109 @@ namespace VideoDownload
         private string ffmpegOutput;
         private int FFplayid;
         public static string url = "", name;
+        private string movieName;
+        private int CountMovie = 0;
+
+        Dictionary<string, string> headers = new Dictionary<string, string>();
+        
         public MuShow()
         {
             InitializeComponent();
             ReadStdOutput += new DelReadStdOutput(ReadStdOutputAction);
             ReadErrOutput += new DelReadErrOutput(ReadErrOutputAction);
+            headers.Add("Timeout", "2000");
+            headers.Add("ContentType", "application/x-www-form-urlencoded; charset=UTF-8");
+            headers.Add("UserAgent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");
+
         }
         private void LoginDataBase(string MovieName)
         {
-            textBox_Info.Text = "";
-            MovieList.Clear();
-            MovieNameList.Clear();
-            string constructorString = "Database=doubanMovie;Data Source= 120.77.159.49;User Id=doubanMovie;Password=EwJSpRGRaMxLHHNc;charset='utf8';pooling=true";
-            MySqlConnection myConnnect = new MySqlConnection(constructorString);
-            myConnnect.Open();
-            DataSet Movieds = new DataSet();
-            string MovieInfo = "SELECT * FROM `MovieUrl` WHERE name LIKE '%" + MovieName + "%'";
-            using (MySqlDataAdapter adp = new MySqlDataAdapter(MovieInfo, myConnnect))
+            movieName = MovieName;
+            if (!checkBox1.Checked)
             {
-                adp.Fill(Movieds);
+                textBox_Info.Text = "";
+                MovieList.Clear();
+                MovieNameList.Clear();
+                string constructorString = "Database=doubanMovie;Data Source= 120.77.159.49;User Id=doubanMovie;Password=EwJSpRGRaMxLHHNc;charset='utf8';pooling=true";
+                MySqlConnection myConnnect = new MySqlConnection(constructorString);
+                myConnnect.Open();
+                DataSet Movieds = new DataSet();
+                string MovieInfo = "SELECT * FROM `MovieUrl` WHERE name LIKE '%" + MovieName + "%'";
+                using (MySqlDataAdapter adp = new MySqlDataAdapter(MovieInfo, myConnnect))
+                {
+                    adp.Fill(Movieds);
+                }
+                myConnnect.Close();
+                for (int i = 0; i < Movieds.Tables[0].Rows.Count; i++)
+                {
+                    textBox_Info.AppendText("编号：" + i + "     电影名：" + Movieds.Tables[0].Rows[i][1].ToString() + "      地址：" + Movieds.Tables[0].Rows[i][2].ToString() + "\r\n");
+                    MovieList.Add(Movieds.Tables[0].Rows[i][2].ToString());
+                    MovieNameList.Add(Movieds.Tables[0].Rows[i][1].ToString());
+                    Thread.Sleep(100);
+                }
+                Movieds.Dispose();
             }
-            myConnnect.Close();
-            for(int i = 0 ;i< Movieds.Tables[0].Rows.Count; i++)
+            else
             {
-                textBox_Info.AppendText("编号："+i+"     电影名："+Movieds.Tables[0].Rows[i][1].ToString()+"      地址："+ Movieds.Tables[0].Rows[i][2].ToString() + "\r\n");
-                MovieList.Add(Movieds.Tables[0].Rows[i][2].ToString());
-                MovieNameList.Add(Movieds.Tables[0].Rows[i][1].ToString());
-                Thread.Sleep(100);
+                CountMovie = 0;
+                textBox_Info.Text = "";
+                MovieList.Clear();
+                MovieNameList.Clear();
+                JObject spyuan = JsonHelper.Readjson(@"Movie.json");
+                foreach (var MovieFindKey in spyuan["Movie"])
+                {
+                    Thread thread_SeachMovie = new Thread(new ThreadStart(delegate ()
+                    {
+                        SMovie(MovieFindKey);
+                    }));
+                    thread_SeachMovie.Start();
+                }
             }
-            Movieds.Dispose();
+        }
+        private void SMovie(JToken MovieFindKey)
+        {
+            try
+            {
+                Request Response_MoviePage = new Request(MovieFindKey["searchUrl"] + movieName, headers);
+                var html = Response_MoviePage.GetHtml();
+                var PageMS = html[0].SelectNodes(MovieFindKey["PageListFind"]["PageList"].ToString());
+                if (PageMS == null)
+                {
+                    Console.WriteLine(MovieFindKey["title"] + "无该资源"); return;
+                }
+                foreach (var MovieUrl_A in PageMS)
+                {
+                    String MovieUrl = MovieFindKey["baseUrl"] + MovieUrl_A.SelectSingleNode(MovieFindKey["PageListFind"]["MovieAdress"].ToString()).Attributes[MovieFindKey["PageListFind"]["href"].ToString()].Value;
+                    Request Response_MovieUrl = new Request(MovieUrl, headers);
+                    var html_MovieUrl = Response_MovieUrl.GetHtml()[0];
+                    string MovieName = html_MovieUrl.SelectSingleNode(MovieFindKey["MovieNmae"].ToString()).InnerText;
+                    Console.WriteLine(MovieName);
+                    foreach (var f3 in html_MovieUrl.SelectSingleNode(MovieFindKey["MovieListFind"]["MovieList"].ToString()).SelectNodes(MovieFindKey["MovieListFind"]["MovieUrl"].ToString()))
+                    {
+                        int index = f3.InnerText.IndexOf("$");
+                        if (index == -1) { continue; }
+                        string MovieAddress = f3.InnerText.Substring(index + 1, f3.InnerText.Length - index - 1);
+                        Console.WriteLine(MovieFindKey["title"] + "- - - - - -" + MovieAddress);
+                        //MovieInfo.Add(new string[2] { MovieName, MovieAddress });
+                        MovieList.Add(MovieAddress);
+                        MovieNameList.Add(MovieName);
+                        BeginInvoke(new Action(() =>
+                        {
+                            textBox_Info.AppendText("编号：" + CountMovie++ + "     电影名：" + MovieName + "      地址：" + MovieAddress + "\r\n");
+                            textBox_Info.Update();
+                        }), null);
+                    }
+                }
+            }
+            catch
+            {
+                BeginInvoke(new Action(() =>
+                {
+                    textBox_Info.AppendText("由于网络问题，暂无资源" + "\r\n");
+                    textBox_Info.Update();
+                }), null);
+                Console.WriteLine("网络出错");
+            }
         }
 
         private void VideoStartF_Click(object sender, EventArgs e)
