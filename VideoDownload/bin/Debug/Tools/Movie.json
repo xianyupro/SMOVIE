@@ -1,0 +1,133 @@
+{
+	"Movie":[
+    {
+		"baseUrl": "http://www.gaoqingzy.com",
+		"PageListFind": {
+			"PageList": "//ul[@class='nr']",
+			"MovieAdress": ".//a[@class='name']",
+			"href": "href"
+		},
+		"MovieListFind": {
+			"MovieList": "//div[@style='padding-left:10px;word-break: break-all; word-wrap:break-word;']",
+			"MovieUrl": ".//li"
+		},
+		"MovieNmae": "//div[@class='vodInfo']//h2[1]",
+		"searchUrl": "http://www.gaoqingzy.com/index.php?m=vod-search&wd=",
+		"title": "高清资源网",
+		"weight": 1
+	},
+	{
+		"baseUrl": "http://www.zuidazy1.net",
+		"PageListFind": {
+			"PageList": "//div[@class='xing_vb']//span[@class='xing_vb4']",
+			"MovieAdress": ".//a[1]",
+			"href": "href"
+		},
+		"MovieListFind": {
+			"MovieList": "//div[@style='padding-left:10px;word-break: break-all; word-wrap:break-word;']",
+			"MovieUrl": ".//li"
+		},
+		"MovieNmae": "//div[@class='vodInfo']//h2[1]",
+		"searchUrl": "http://www.zuidazy1.net/index.php?m=vod-search&wd=",
+		"title": "最大资源网",
+		"weight": 2
+	},
+	{
+		"baseUrl": "http://www.mbkkk.com",
+		"PageListFind": {
+			"PageList": "//div[@class='xing_vb']//span[@class='xing_vb4']",
+			"MovieAdress": ".//a[1]",
+			"href": "href"
+		},
+		"MovieListFind": {
+			"MovieList": "//div[@style='padding-left:10px;word-break: break-all; word-wrap:break-word;']",
+			"MovieUrl": ".//li"
+		},
+		"MovieNmae": "//div[@class='vodInfo']//h2[1]",
+		"searchUrl": "http://www.mbkkk.com/index.php?m=vod-search&wd=",
+		"title": "秒播资源网",
+		"weight": 3
+	}
+	,
+	{
+		"baseUrl": "http://www.123ku.com",
+		"PageListFind": {
+			"PageList": "//div[@class='xing_vb']//span[@class='xing_vb4']",
+			"MovieAdress": ".//a[1]",
+			"href": "href"
+		},
+		"MovieListFind": {
+			"MovieList": "//div[@style='padding-left:10px;word-break: break-all; word-wrap:break-word;']",
+			"MovieUrl": ".//li"
+		},
+		"MovieNmae": "//div[@class='vodInfo']//h2[1]",
+		"searchUrl": "http://www.123ku.com/index.php?m=vod-search&wd=",
+		"title": "123资源站",
+		"weight": 4
+	},
+	{
+		"baseUrl": "http://www.okzyw.com",
+		"PageListFind": {
+			"PageList": "//div[@class='xing_vb']//span[@class='xing_vb4']",
+			"MovieAdress": ".//a[1]",
+			"href": "href"
+		},
+		"MovieListFind": {
+			"MovieList": "//div[@style='padding-left:10px;word-break: break-all; word-wrap:break-word;']",
+			"MovieUrl": ".//li"
+		},
+		"MovieNmae": "//div[@class='vodInfo']//h2[1]",
+		"searchUrl": "http://www.okzyw.com/index.php?m=vod-search&wd=",
+		"title": "OK资源网",
+		"weight": 5
+	},
+	{
+		"baseUrl": "http://www.chaojizy.com",
+		"PageListFind": {
+			"PageList": "//div[@class='xing_vb']//span[@class='xing_vb4']",
+			"MovieAdress": ".//a[1]",
+			"href": "href"
+		},
+		"MovieListFind": {
+			"MovieList": "//div[@style='padding-left:10px;word-break: break-all; word-wrap:break-word;']",
+			"MovieUrl": ".//li"
+		},
+		"MovieNmae": "//div[@class='vodInfo']//h2[1]",
+		"searchUrl": "http://www.chaojizy.com/index.php?m=vod-search&wd=",
+		"title": "超级资源网",
+		"weight": 6
+	},
+	{
+		"baseUrl": "http://www.zuixinzy.cc",
+		"PageListFind": {
+			"PageList": "//div[@class='xing_vb']//span[@class='xing_vb4']",
+			"MovieAdress": ".//a[1]",
+			"href": "href"
+		},
+		"MovieListFind": {
+			"MovieList": "//div[@style='padding-left:10px;word-break: break-all; word-wrap:break-word;']",
+			"MovieUrl": ".//li"
+		},
+		"MovieNmae": "//div[@class='vodInfo']//h2[1]",
+		"searchUrl": "http://www.zuixinzy.cc/index.php?m=vod-search&wd=",
+		"title": "最新资源网",
+		"weight": 7
+	},
+	{
+		"baseUrl": "http://zy.bajieziyuan.com",
+		"PageListFind": {
+			"PageList": "//tbody[@id='data_list']//tr[@class='DianDian']",
+			"MovieAdress": ".//a[1]",
+			"href": "href"
+		},
+		"MovieListFind": {
+			"MovieList": "//div[@class='movievod']",
+			"MovieUrl": ".//li"
+		},
+		"MovieNmae": "//div[@class='videoDetail']//li[@class='sa']",
+		"searchUrl": "http://zy.bajieziyuan.com/index.php?m=vod-search&wd=",
+		"title": "八戒资源网",
+		"weight": 8
+	}
+    ]
+}
