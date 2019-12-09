@@ -48,7 +48,7 @@ namespace VideoDownload
             InitializeComponent();
             ReadStdOutput += new DelReadStdOutput(ReadStdOutputAction);
             ReadErrOutput += new DelReadErrOutput(ReadErrOutputAction);
-            headers.Add("Timeout", "2000");
+            headers.Add("Timeout", "1000");
             headers.Add("ContentType", "application/x-www-form-urlencoded; charset=UTF-8");
             headers.Add("UserAgent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");
 
@@ -78,6 +78,7 @@ namespace VideoDownload
                     MovieNameList.Add(Movieds.Tables[0].Rows[i][1].ToString());
                     Thread.Sleep(100);
                 }
+                textBox_Info.AppendText("------资源查找结束------");
                 Movieds.Dispose();
             }
             else
@@ -141,6 +142,10 @@ namespace VideoDownload
                 }), null);
                 Console.WriteLine("网络出错");
             }
+            BeginInvoke(new Action(() =>
+            {
+                textBox_Info.AppendText("------" + MovieFindKey["title"] + ":资源查找结束------" + "\r\n");
+            }), null);
         }
 
         private void VideoStartF_Click(object sender, EventArgs e)

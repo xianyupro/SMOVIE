@@ -60,7 +60,7 @@
             this.textBox_Info.Location = new System.Drawing.Point(11, 244);
             this.textBox_Info.Multiline = true;
             this.textBox_Info.Name = "textBox_Info";
-            this.textBox_Info.Size = new System.Drawing.Size(872, 387);
+            this.textBox_Info.Size = new System.Drawing.Size(891, 387);
             this.textBox_Info.TabIndex = 0;
             this.textBox_Info.Text = "Video Information List here";
             // 
@@ -127,7 +127,7 @@
             this.VideoUrlText.SelectedText = "";
             this.VideoUrlText.SelectionLength = 0;
             this.VideoUrlText.SelectionStart = 0;
-            this.VideoUrlText.Size = new System.Drawing.Size(705, 23);
+            this.VideoUrlText.Size = new System.Drawing.Size(724, 23);
             this.VideoUrlText.TabIndex = 3;
             this.VideoUrlText.Text = "https://youku.com-ok-pptv.com/20190920/7253_e7248787/index.m3u8";
             this.VideoUrlText.UseSystemPasswordChar = false;
@@ -143,7 +143,7 @@
             this.fileStext.SelectedText = "";
             this.fileStext.SelectionLength = 0;
             this.fileStext.SelectionStart = 0;
-            this.fileStext.Size = new System.Drawing.Size(682, 23);
+            this.fileStext.Size = new System.Drawing.Size(702, 23);
             this.fileStext.TabIndex = 3;
             this.fileStext.Text = "D:\\";
             this.fileStext.UseSystemPasswordChar = false;
@@ -151,7 +151,7 @@
             // FileSaveLocationButt
             // 
             this.FileSaveLocationButt.Depth = 0;
-            this.FileSaveLocationButt.Location = new System.Drawing.Point(808, 104);
+            this.FileSaveLocationButt.Location = new System.Drawing.Point(822, 104);
             this.FileSaveLocationButt.MouseState = MaterialSkin.MouseState.HOVER;
             this.FileSaveLocationButt.Name = "FileSaveLocationButt";
             this.FileSaveLocationButt.Primary = true;
@@ -254,7 +254,7 @@
             // 
             this.OpenSaveLocation.Depth = 0;
             this.OpenSaveLocation.Font = new System.Drawing.Font("宋体", 12F);
-            this.OpenSaveLocation.Location = new System.Drawing.Point(178, 180);
+            this.OpenSaveLocation.Location = new System.Drawing.Point(174, 180);
             this.OpenSaveLocation.MouseState = MaterialSkin.MouseState.HOVER;
             this.OpenSaveLocation.Name = "OpenSaveLocation";
             this.OpenSaveLocation.Primary = true;
@@ -307,7 +307,7 @@
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(682, 145);
+            this.materialLabel2.Location = new System.Drawing.Point(694, 145);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(89, 19);
@@ -318,7 +318,7 @@
             // 
             this.XianChengText.Depth = 0;
             this.XianChengText.Hint = "";
-            this.XianChengText.Location = new System.Drawing.Point(778, 144);
+            this.XianChengText.Location = new System.Drawing.Point(792, 144);
             this.XianChengText.MouseState = MaterialSkin.MouseState.HOVER;
             this.XianChengText.Name = "XianChengText";
             this.XianChengText.PasswordChar = '\0';
@@ -336,7 +336,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 643);
+            this.ClientSize = new System.Drawing.Size(914, 643);
             this.Controls.Add(this.OpenSaveLocation);
             this.Controls.Add(this.VideoStartD);
             this.Controls.Add(this.TSRadio);

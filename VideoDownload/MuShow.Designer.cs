@@ -74,6 +74,7 @@
             // 
             this.VideoNameText.Depth = 0;
             this.VideoNameText.Hint = "";
+            this.VideoNameText.ImeMode = System.Windows.Forms.ImeMode.HangulFull;
             this.VideoNameText.Location = new System.Drawing.Point(106, 72);
             this.VideoNameText.MouseState = MaterialSkin.MouseState.HOVER;
             this.VideoNameText.Name = "VideoNameText";
